@@ -31,11 +31,11 @@ require "cfg/conexion.php";
 
    $query="select * from SALA_REMOTA";
 
-   $resultado=mysql_query($query);
+   $resultado=mysqli_query($conexion, $query);
    echo "<div class='container'>";
    echo "<table class='table table-striped'>";
-   echo "<th> Nombre de Sala</th> <th>Respondable de Sala</th> <th>Telefono</th> <th>E-Mail</th> <th>IP</th> <th>ISDN</th> <th>Editar</th> <th>Eliminar</th>";
-   while ($dato=mysql_fetch_array($resultado)) {
+   echo "<th> Nombre de Sala</th> <th>Respondable de Sala</th> <th>Telefono</th> <th>E-Mail</th> <th>IP</th> <th>Editar</th> <th>Eliminar</th>";
+   while ($dato=mysqli_fetch_array($resultado)) {
    
    echo "<tr>";  
    echo "<td>". $dato['nombre']."</td>";
@@ -43,13 +43,13 @@ require "cfg/conexion.php";
    echo "<td>". $dato['telefono']."</td>";
    echo "<td>". $dato ['email_responsable']."</td>";
    echo "<td>". $dato ['ip']."</td>";
-   echo "<td>". $dato ['isdn']."</td>";
    echo "<td><a href='editarSala.php?id=". $dato ['id_sala_remota']."'>Editar</a></td>";
    echo "<td><a href='eliminarSala.php?id=". $dato ['id_sala_remota']."'>Eliminar</a></td>";
    echo "</tr>";
    }
    echo "</table>";
 ?>
+   <button type="button" class="btn btn-success" onclick="window.location.href='sala_remota.html'">Agregar Sala</button>
    
    </div>
     <!-- jQuery -->
